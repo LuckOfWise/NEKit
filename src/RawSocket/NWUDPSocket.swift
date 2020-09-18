@@ -75,8 +75,10 @@ public class NWUDPSocket: NSObject {
                     return
                 }
                 
-                for data in dataArray {
-                    sSelf.delegate?.didReceive(data: data, from: sSelf)
+                if let array = dataArray {
+                    for data in array {
+                        sSelf.delegate?.didReceive(data: data, from: sSelf)
+                    }
                 }
             }
             }, maxDatagrams: 32)
